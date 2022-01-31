@@ -124,7 +124,7 @@ This random variable follows a t distribution with 3 degrees of freedom.
 ```{r}
 sample_data <- sample_data %>%
   mutate(
-    F = (v/2) / (u/3)
+    F_var = (v/2) / (u/3)
   )
 ```
 
@@ -165,7 +165,8 @@ Both are roughly bell shaped distributions centered at 0.  The t distribution ha
 ggplot(data = sample_data, mapping = aes(x = u)) +
   geom_histogram(mapping = aes(y = ..density..), fill = "cornflowerblue") +
   stat_function(fun = dchisq, args = list(df = 3), color = "orange")
-ggplot(data = sample_data, mapping = aes(x = F)) +
+
+ggplot(data = sample_data, mapping = aes(x = F_var)) +
   geom_histogram(mapping = aes(y = ..density..), fill = "cornflowerblue") +
   stat_function(fun = df, args = list(df1 = 2, df2 = 3), color = "orange")
 ```
